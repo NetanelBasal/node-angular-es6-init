@@ -1,0 +1,45 @@
+.create-project {
+  margin-top: 4em;
+  form > div.panel {
+    @include span(4);
+    &:nth-child(3n+3) {
+      margin-right: 0;
+    }
+  }
+}
+
+.ui-select-match, .ui-select-search {
+  height: 46px;
+  font-size: 18px;
+  span {
+    font-size: 18px;
+  }
+}
+
+.dropdown-header {
+  color: #4FB487;
+  font-size: 1em;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.col-str {
+  padding: 0.8em;
+}
+
+.panel-heading {
+  font-size: 1.2em;
+}
+
+.num-rows {
+  width: 32.20339%;
+}
+
+.add-column.ng-enter {
+  animation: fadeInLeft 1s;
+}
+
+.rel {
+  margin-top: 4em;
+}

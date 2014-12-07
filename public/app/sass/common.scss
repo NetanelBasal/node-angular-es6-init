@@ -1,0 +1,67 @@
+$susy: (
+  columns: 12,
+  container: 90%,
+);
+
+html, body {
+  overflow-x: hidden;
+  background-image: url(../../images/bg.png);
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  cursor: pointer;
+  outline: none;
+  &:focus, &:active {
+    outline: none;
+    border:none;
+  }
+}
+
+.mt {
+  margin-top: 1em;
+}
+
+.input-group-addon {
+  min-width: 39px;
+  color:#fff;
+  background: $btn-bg;
+  border-color: #68D6BD;
+}
+
+.modal-content {
+  padding: 1em;
+}
+
+.modal-dialog {
+  width:500px;
+}
+
+
+.btn-primary, .btn-primary:active, .btn-primary:focus  {
+  background-color: $btn-bg;
+  border-color: #68D6BD;
+  &:hover {
+    background-color: darken($btn-bg, 10%);
+    border-color: #68D6BD;
+  }
+}
+
+.btn-info, .btn-info:active, .btn-info:focus, .btn-info:disabled,.btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active {
+  background: lighten($btn-bg, 10%);
+  &:hover {
+    background-color: darken($btn-bg, 10%);
+    border-color: #68D6BD;
+  }
+}
+
+.help-block {
+  color:#BB0E0E;
+}
+
+.animate-view.ng-enter {
+  animation: fadeIn 0.8s;
+}
+
+
+

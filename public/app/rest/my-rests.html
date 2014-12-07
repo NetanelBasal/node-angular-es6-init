@@ -1,0 +1,16 @@
+<div class="container my-rests">
+  <h1>My Rests Api</h1>
+
+  <div class="mt">
+    <div ng-repeat="rest in rests.rests" class="panel panel-success">
+      <div class="panel-heading">{{rest.split('/')[2].toUpperCase()}} Project - {{rest.split('/')[3]}} table</div>
+      <div class="rests-list">
+        <p><span>GET</span> - {{rest}}</p>
+        <p><span>GET </span>- {{rest}}/[id]</p>
+        <p><span>PUT</span> - {{rest}}/[id]</p>
+        <p><span>DELETE</span> - {{rest}}/[id]</p>
+      </div>
+
+    </div>
+  </div>
+</div>
