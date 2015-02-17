@@ -1,31 +1,38 @@
-(function( TweenMax ) {
-  'use strict'
-  angular.module('json.monster')
+import HomeController from './home.controller.js';
 
-    .config(function( $stateProvider, $urlRouterProvider ) {
+angular.module(require('../config').appName)
 
-      $urlRouterProvider.otherwise("/");
+  .config(( $stateProvider, $urlRouterProvider ) => {
 
-      $stateProvider
-        .state('home', {
-          url         : "/",
-          controller  : 'HomeController',
-          controllerAs: 'home',
-          templateUrl : "app/home/home.html"
-        })
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider.state('app', {
+      abstract: true,
+      views   : {
+        nav: {
+          templateUrl: 'app/nav/nav.tpl.html',
+          controller : 'NavController as Nav'
+        },
+
+        '': {
+          templateUrl: 'app/content.html'
+        },
+
+        footer: {
+          templateUrl: 'app/footer/footer.tpl.html'
+        }
+
+      }
+    }).state('app.home', {
+      url        : '/',
+      templateUrl: 'app/home/home.tpl.html',
+      controller : 'HomeController as Home'
     })
 
-    .controller('HomeController', require('./home.controller'))
+  })
 
-    .animation(".net-fade", function() {
-      return {
-        leave: function( element, done ) {
-          TweenMax.to(element, 1, { opacity: 0, 'left': '130px', onComplete: done });
-        },
-        enter: function( element, done ) {
-          element.css('position', 'relative');
-          TweenMax.from(element, 1, { opacity: 0, 'left': '130px', onComplete: done });
-        }
-      }
-    });
-})(TweenMax);
+  .controller('HomeController', HomeController);
+
+
+
+

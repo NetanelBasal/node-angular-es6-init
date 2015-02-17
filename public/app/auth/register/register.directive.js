@@ -1,32 +1,33 @@
 // @ngInject
-function register() {
+function registerDire() {
   return {
-    restrict   : 'AE',
-    templateUrl: 'app/auth/register/register.tpl.html',
-    scope      : {
+    restrict        : 'AE',
+    templateUrl     : 'app/auth/register/register.tpl.html',
+    bindToController: true,
+    scope           : {
       onSuccess: '='
     },
-    controller : controller
+    controller      : controller
   }
 
   // @ngInject
-  function controller( $scope, authService , userService) {
+  function controller( AuthService, UserService ) {
 
-    $scope.register = function() {
-      if( $scope.registerForm.$valid ) {
+    this.register = function() {
+      if( this.registerForm.$valid ) {
 
-        authService
-          .register($scope.user)
+        AuthService
+          .register(this.user)
           .then(function() {
-            var user = {email: $scope.user.email, password: $scope.user.password};
-            authService.login(user)
-              .then(function(res) {
-                userService.authUser = res.data;
-                $scope.onSuccess();
+            var user = { email: this.user.email, password: this.user.password };
+            AuthService.login(user)
+              .then(function( res ) {
+                UserService.authUser = res.data;
+                this.onSuccess();
               });
           })
           .catch(function() {
-            $scope.error = true;
+            this.error = true;
           })
 
       }
@@ -34,4 +35,4 @@ function register() {
   }
 }
 
-module.exports = register;
+export default registerDire;

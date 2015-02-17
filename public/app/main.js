@@ -1,15 +1,10 @@
 (function() {
   'use strict'
-
   var modules = require('./modules');
 
   require('./common/field-match.module');
 
   require('./common/spinner-btn/spinner.btn.module');
-
-  require('./common/sort-table/sort.table.module');
-
-  require('./common/slide.toggle.table.row');
 
   require('./common/password.chars.validator');
 
@@ -19,7 +14,7 @@
 
   require('./services/services.index');
 
-  angular.module('json.monster', modules)
+  angular.module('mb.monster', modules)
 
     .config(require('./config/config.index'))
 
@@ -32,8 +27,6 @@
   require('./auth/auth.index');
 
   require('./nav/nav.index');
-
-  require('./rest/rest.index');
 
 })();
 

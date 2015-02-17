@@ -1,10 +1,12 @@
-// @ngInject
-function userService() {
-  /**
-   *
-   * @type {null}
-   */
-  this.authUser = null;
+/**
+ * UserService
+ */
+class UserService {
+  // @ngInject
+  constructor() {
+    this.authUser = null;
+  }
+
 }
 
-module.exports = userService;
+export default UserService

@@ -1,7 +1,8 @@
+import AuthService from './auth.service.js';
+import UserService from './user.service.js';
+
 angular.module('services', [])
 
-.service('authService', require('./auth.service.js'))
+  .service('AuthService', AuthService)
 
-.service('userService', require('./user.service.js'))
-
-.service('projectService', require('./project.service.js'))
+  .service('UserService', UserService);

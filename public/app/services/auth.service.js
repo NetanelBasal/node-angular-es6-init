@@ -1,13 +1,20 @@
-// @ngInject
-function authService( $http , userService) {
+/**
+ * Auth Service
+ */
+class AuthService {
+  // @ngInject
+  constructor( $http, UserService ) {
+    this.$http = $http;
+    this.UserService = UserService;
+  }
 
   /**
    *
    * @param cred
    * @returns {HttpPromise}
    */
-  this.login = function( cred ) {
-    return $http.post('auth/login', cred);
+    login( cred ) {
+    return this.$http.post('auth/login', cred);
   }
 
   /**
@@ -15,20 +22,20 @@ function authService( $http , userService) {
    * @param user
    * @returns {HttpPromise}
    */
-  this.register = function( user ) {
-    return $http.post('auth/register', user);
+    register( user ) {
+    return this.$http.post('auth/register', user);
   }
 
   /**
    *
    * @returns {HttpPromise}
    */
-  this.logout = function() {
-    userService.authUser = null;
-    return $http.post('auth/logout', {});
+    logout() {
+    this.UserService.authUser = null;
+    return this.$http.post('auth/logout', {});
   }
-
 }
 
-module.exports = authService;
+export default AuthService
+
 

@@ -1,9 +1,17 @@
-// @ngInject
-function loginController( $scope, authService) {
-
-  $scope.onSuccess = function() {
+/**
+ * LoginController
+ */
+class LoginController {
+  // @ngInject
+  constructor( ) {
 
   }
+
+  onSuccess() {
+
+  }
+
 }
 
-module.exports = loginController;
+export default LoginController
+

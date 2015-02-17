@@ -1,14 +1,20 @@
-// @ngInject
-function loginModalController( $scope, $modalInstance ) {
-
-  $scope.close = function() {
-    $modalInstance.dismiss('cancel');
+/**
+ * LoginModalController
+ */
+class LoginModalController {
+  // @ngInject
+  constructor( $modalInstance ) {
+    this.$modalInstance = $modalInstance;
   }
 
-  $scope.onSuccess = function() {
-    $modalInstance.close();
+  close() {
+    this.$modalInstance.dismiss('cancel');
+  }
+
+  onSuccess() {
+    this.$modalInstance.close();
   }
 
 }
 
-module.exports = loginModalController;
+export default LoginModalController

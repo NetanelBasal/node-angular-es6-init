@@ -1,10 +1,16 @@
-// @ngInject
-function registerController( $scope, authService  ) {
+/**
+ * RegisterController
+ */
+class RegisterController {
+  // @ngInject
+  constructor() {
 
-  $scope.onSuccess = function() {
+  }
+
+  onSuccess() {
 
   }
 
 }
 
-module.exports = registerController;
+export default RegisterController

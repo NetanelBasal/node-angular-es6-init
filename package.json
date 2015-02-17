@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "live": "mode=pro node ./app.js",
+    "start": "nodemon ./app.js"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
@@ -11,13 +12,17 @@
     "debug": "~2.0.0",
     "ejs": "~0.8.5",
     "express": "~4.9.0",
-    "faker": "^2.1.1",
+    "express-session": "^1.10.3",
     "fs-extra": "^0.12.0",
     "json-file-db": "0.0.2",
     "lodash": "^2.4.1",
+    "mongoose": "^3.8.23",
     "morgan": "~1.3.0",
     "randomstring": "^1.0.3",
     "serve-favicon": "~2.1.3",
     "slash": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.7"
   }
 }

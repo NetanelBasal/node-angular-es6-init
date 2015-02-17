@@ -1,22 +1,20 @@
 /*@ngInject*/
-function runPhase( $rootScope, userService, $state ) {
+function runPhase( $rootScope, UserService, $state ) {
 
-  userService.authUser = window.user || null;
+  UserService.authUser = window.user || null;
 
-  $rootScope.userService = userService;
+  $rootScope.UserService = UserService;
 
+  $rootScope.$on("$stateChangeStart", function( event, toState ) {
 
-
-  $rootScope.$on("$stateChangeStart", function(event, toState) {
-
-    if (toState.authenticate && !userService.authUser) {
+    if( toState.authenticate && !UserService.authUser ) {
       event.preventDefault();
       $state.go("home");
     }
 
   });
 
-  $rootScope.$on('$stateChangeError', function(event, toState,toParams, fromState, fromParams, error) {
+  $rootScope.$on('$stateChangeError', function( event, toState, toParams, fromState, fromParams, error ) {
     console.log(error);
   });
 
@@ -25,4 +23,4 @@ function runPhase( $rootScope, userService, $state ) {
   })
 }
 
-module.exports = runPhase;
+export default runPhase;

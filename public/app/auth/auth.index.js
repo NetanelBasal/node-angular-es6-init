@@ -1,34 +1,31 @@
-(function () {
-  'use strict'
-  angular.module('auth.local', [])
+angular.module('auth.local', [])
 
-      .config( function( $stateProvider, $urlRouterProvider ) {
+  .config(( $stateProvider ) => {
 
-        $stateProvider
-            .state('login', {
-              url: "/auth/login",
-              controller:'loginController',
-              templateUrl: "app/auth/login/login.html"
-            })
-            .state('register', {
-              url: "/auth/register",
-              controller:'registerController',
-              templateUrl: "app/auth/register/register.html"
-            })
+    $stateProvider
+      .state('app.login', {
+        url        : "/auth/login",
+        controller : 'LoginController as Login',
+        templateUrl: "app/auth/login/login.html"
       })
+      .state('app.register', {
+        url        : "/auth/register",
+        controller : 'RegisterController as Register',
+        templateUrl: "app/auth/register/register.html"
+      })
+  })
 
-      .controller('loginController', require('./login/login.controller'))
+  .controller('LoginController', require('./login/login.controller'))
 
-      .controller('registerController', require('./register/register.controller'))
+  .controller('RegisterController', require('./register/register.controller'))
 
-      .controller('registerModalController', require('./register/registerModal.controller'))
+  .controller('RegisterModalController', require('./register/registerModal.controller'))
 
-      .controller('loginModalController', require('./login/loginModal.controller'))
+  .controller('LoginModalController', require('./login/loginModal.controller'))
 
-      .directive('register', require('./register/register.directive'))
+  .directive('register', require('./register/register.directive'))
 
-      .directive('login', require('./login/login.directive'))
+  .directive('login', require('./login/login.directive'))
 
-      .directive('validEmail', require('./register/email-validation.directive'));
+  .directive('validEmail', require('./register/email-validation.directive'));
 
-})();

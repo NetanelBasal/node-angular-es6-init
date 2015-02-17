@@ -7,4 +7,4 @@ function config( $httpProvider, $sceProvider ) {
 
 }
 
-module.exports = config;
+export default config;

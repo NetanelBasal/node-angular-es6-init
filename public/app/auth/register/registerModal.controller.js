@@ -1,14 +1,20 @@
-// @ngInject
-function registerModalController( $scope, $modalInstance ) {
-
-  $scope.close = function() {
-    $modalInstance.dismiss('cancel');
+/**
+ * RegisterModalController
+ */
+class RegisterModalController {
+  // @ngInject
+  constructor( $modalInstance ) {
+    this.$modalInstance = $modalInstance;
   }
 
-  $scope.onSuccess = function() {
-    $modalInstance.dismiss('cancel');
+  close() {
+    this.$modalInstance.dismiss('cancel');
+  }
+
+  onSuccess() {
+    this.$modalInstance.close();
   }
 
 }
 
-module.exports = registerModalController;
+export default RegisterModalController

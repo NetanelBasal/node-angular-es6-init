@@ -1,7 +1,6 @@
-(function () {
-  'use strict'
-  angular.module('json.monster')
+import NavController from './nav.controller.js';
 
-      .controller('navController', require('./nav.controller'));
+angular.module(require('../config').appName)
 
-})();
+  .controller('NavController', NavController);
+

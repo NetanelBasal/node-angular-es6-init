@@ -1,28 +1,29 @@
 // @ngInject
-function login( $sessionStorage, userService ) {
+function loginDire( UserService ) {
   return {
-    restrict   : 'AE',
-    templateUrl: 'app/auth/login/login.tpl.html',
-    scope      : {
+    restrict        : 'AE',
+    templateUrl     : 'app/auth/login/login.tpl.html',
+    bindToController: true,
+    scope           : {
       onSuccess: '='
     },
-    controller : controller
+    controller      : controller
   }
 
   // @ngInject
-  function controller( $scope, authService ) {
+  function controller( AuthService ) {
 
-    $scope.login = function() {
+    this.login = function() {
 
-      if( $scope.loginForm.$valid ) {
-        authService
-          .login($scope.user).then(function( res ) {
-            if( ! res ) {
+      if( this.loginForm.$valid ) {
+        AuthService
+          .login(this.user).then(function( res ) {
+            if( !res ) {
               toastr.error('Somthing wrong');
               return;
             } else {
-              userService.authUser = res.data;
-              $scope.onSuccess();
+              UserService.authUser = res.data;
+              this.onSuccess();
             }
           })
       }
@@ -30,4 +31,4 @@ function login( $sessionStorage, userService ) {
   }
 }
 
-module.exports = login;
+export default loginDire;

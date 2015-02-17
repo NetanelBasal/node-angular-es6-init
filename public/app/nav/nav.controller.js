@@ -1,33 +1,24 @@
-// @ngInject
-function navController( $scope, $modal , authService) {
-
-  this.openLoginModal = function() {
-    var modal = openModal('login');
+/**
+ * NavController
+ */
+class NavController {
+  // @ngInject
+  /**
+   *
+   * @param AuthService
+   */
+    constructor( AuthService ) {
+    this.AuthService = AuthService;
+    this.view = 'nav-view';
   }
 
-  this.openRegisterModal = function() {
-    openModal('register');
-  }
-
-  this.logOut = function() {
-    authService.logout();
-  }
-
-
-  function openModal(type) {
-
-    var view        = 'app/auth/' + type + '/' + type + 'Modal.html',
-        controller = type + 'ModalController'
-
-    var typeModal = $modal.open({
-      templateUrl: view,
-      controller: controller,
-      size: 'sm'
-    });
-
-    return typeModal;
+  logOut() {
+    this.AuthService.logout();
   }
 
 }
 
-module.exports = navController;
+export default NavController
+
+
+
