@@ -1,7 +1,8 @@
 /*@ngInject*/
-function runPhase( $rootScope, UserService, $state ) {
+function runPhase( $rootScope, UserService, $state, AuthService ) {
 
-  UserService.authUser = window.user || null;
+
+  UserService.authUser = AuthService.getUserToken() || null;
 
   $rootScope.UserService = UserService;
 

@@ -3,9 +3,10 @@
  */
 class UserService {
   // @ngInject
-  constructor() {
-    this.authUser = null;
+  constructor(store ) {
+    this.authUser = store.get('oAuth') || null;
   }
+
 
 }
 

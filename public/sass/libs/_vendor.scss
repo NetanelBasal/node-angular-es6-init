@@ -1,4 +1,5 @@
 @import 'susy/susy';
-@import 'juice';
+//@import 'juice/dist/juice';
 @import 'breakpoint/breakpoint';
-@import 'bourbon/bourbon';
+@import "bootstrap/bootstrap-sprockets";
+@import "bootstrap/bootstrap";

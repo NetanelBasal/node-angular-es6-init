@@ -5,11 +5,12 @@
     /** Third party modules **/
 
     'ui.router',
-    'ngStorage',
     'ngAnimate',
     'ngMessages',
     'wait.me',
-
+    'ui.bootstrap',
+    'angular-storage',
+    '$hello',
   /** Local modules **/
 
     'password.chars.validator',

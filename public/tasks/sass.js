@@ -1,11 +1,12 @@
 var gulp = require('gulp');
-var livereload = require('gulp-livereload');
 var sass = require('gulp-ruby-sass');
 var prefix = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var notify = require("gulp-notify");
 var minifyCSS = require('gulp-minify-css');
 var gulpif = require('gulp-if');
+var livereload = require('gulp-livereload');
+var wait = require('gulp-wait');
 
 var config = require('./../gulp-config');
 
@@ -23,6 +24,7 @@ gulp.task('sass', function() {
     .pipe(prefix("last 10 versions", "> 1%", "ie 8", "ie 7"))
     .pipe(gulpif(config.build, minifyCSS()))
     .pipe(gulp.dest(config.sass.dist))
-    .pipe(notify("Sass Finished!"))
-    .pipe(livereload());
+    .pipe(wait(1000))
+    .pipe(livereload())
+    .pipe(notify("Sass Finished!"));
 });

@@ -12,7 +12,7 @@ var config = {
     mainFileName: 'main.js',
     src         : './app/main.js',
     dist        : './dist',
-    watch       : ['./app/**/**/**/*.js']
+    watch       : ['./app/**/**/*.js']
 
   },
 
@@ -34,7 +34,7 @@ var config = {
   },
 
   live: {
-    path: ['./app/**/**/*.html', './index.ejs']
+    watch: ['./app/**/**/*.html', './index.ejs']
   },
 
   copy: {

@@ -8,17 +8,14 @@ requireDir('./tasks', {
   recurse: true
 });
 
-
-gulp.task('dev', function(cb) {
-  runSequence('js', 'sass', 'watch', cb);
+gulp.task('dev', function( cb ) {
+  runSequence('bower', 'js', 'sass', 'watch', cb);
 });
 
-gulp.task('build', function(cb) {
-  runSequence('images', 'clean', 'usemin', 'copy', cb);
+gulp.task('build', function( cb ) {
+  runSequence('images', 'clean', 'copy', 'usemin', cb);
 });
-//gulp.task('default', function(cb) {
-//  runSequence('nodemon', cb);
-//});
+
 
 
 

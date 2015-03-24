@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "live": "mode=pro node ./app.js",
-    "start": "nodemon ./app.js"
+    "start": "nodemon ./app.js --ignore 'public/**/*.js'"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.8.1",
     "cookie-parser": "~1.3.3",
     "debug": "~2.0.0",
@@ -15,14 +16,23 @@
     "express-session": "^1.10.3",
     "fs-extra": "^0.12.0",
     "json-file-db": "0.0.2",
+    "jwt-simple": "^0.2.0",
     "lodash": "^2.4.1",
+    "moment": "^2.9.0",
     "mongoose": "^3.8.23",
+    "mongoose-validator": "^1.0.3",
     "morgan": "~1.3.0",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
     "randomstring": "^1.0.3",
     "serve-favicon": "~2.1.3",
-    "slash": "^1.0.0"
+    "slash": "^1.0.0",
+    "socket.io": "^1.3.4",
+    "x-frame-options": "0.0.0"
   },
   "devDependencies": {
+    "easy-livereload": "^1.0.3",
+    "node-dev": "^2.6.1",
     "nodemon": "^1.3.7"
   }
 }

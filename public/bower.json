@@ -1,5 +1,5 @@
 {
-  "name": "anguLaravel",
+  "name": "node",
   "version": "0.0.0",
   "authors": [
     "netanel <phpnetanel@gmail.com>"
@@ -24,10 +24,11 @@
     "lodash": "~2.4.1",
     "angular-animate": "~1.3.0",
     "wait-me": "*",
-    "gsap": "~1.14.1",
     "angular-messages": "~1.3.0",
-    "ngstorage": "~0.3.0",
     "toastr": "~2.1.0",
-    "sweetalert": "~0.3.2"
+    "sweetalert": "~0.3.2",
+    "socket.io-client": "~1.3.4",
+    "hello": "~1.5.0",
+    "a0-angular-storage": "~0.0.9"
   }
 }

@@ -16,24 +16,10 @@
     </head>
 
 
-    <body ng-app="mb.monster" ng-cloak>
+    <body ng-app="nb" ng-cloak>
 
 
-
-
-        <ui-view name="nav"></ui-view>
         <ui-view></ui-view>
-        <ui-view name="footer"></ui-view>
-
-
-
-
-        <% if(user) { %>
-        <script>
-            user = <%- JSON.stringify(user) %>
-        </script>
-        <% } %>
-
 
 
         <!-- build:js app.min.js -->
@@ -44,12 +30,14 @@
         <script src="libs/lodash/dist/lodash.compat.js"></script>
         <script src="libs/angular-animate/angular-animate.js"></script>
         <script src="libs/wait-me/dist/waitMe.min.js"></script>
-        <script src="libs/gsap/src/uncompressed/TweenMax.js"></script>
         <script src="libs/angular-messages/angular-messages.js"></script>
-        <script src="libs/ngstorage/ngStorage.js"></script>
         <script src="libs/toastr/toastr.js"></script>
         <script src="libs/sweetalert/lib/sweet-alert.js"></script>
+        <script src="libs/hello/dist/hello.all.min.js"></script>
+        <script src="libs/a0-angular-storage/dist/angular-storage.js"></script>
         <!-- endbower -->
+        <script src="libs/socket.io-client/socket.io.js"></script>
+        <script src="libs/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
         <script src="dist/main.js"></script>
         <!-- endbuild -->
 

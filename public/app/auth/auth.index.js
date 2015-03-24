@@ -27,5 +27,6 @@ angular.module('auth.local', [])
 
   .directive('login', require('./login/login.directive'))
 
+
   .directive('validEmail', require('./register/email-validation.directive'));
 

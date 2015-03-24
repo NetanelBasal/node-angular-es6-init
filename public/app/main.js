@@ -14,7 +14,9 @@
 
   require('./services/services.index');
 
-  angular.module('mb.monster', modules)
+  require('./services/$hello.index');
+
+  const app = angular.module(require('./config').appName, modules)
 
     .config(require('./config/config.index'))
 
@@ -22,11 +24,11 @@
 
     .run(require('./config/run.phase.js'))
 
-  require('./home/home.index');
+  require('./routes')(app);
 
   require('./auth/auth.index');
 
-  require('./nav/nav.index');
+  require('./mainNav/index')(app);
 
 })();
 

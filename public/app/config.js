@@ -1,1 +1,1 @@
-exports.appName = 'mb.monster';
+exports.appName = 'nb';

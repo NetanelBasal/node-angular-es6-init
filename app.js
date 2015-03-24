@@ -9,14 +9,23 @@ var mode = process.env.mode || 'dev';
 var config = require("./config/" + mode);
 var routes = require('./routes/index');
 
+var app = express();
+var server = app.listen(config.port);
+var io = require('socket.io').listen(server, { origins: '*:*' });
+
+io.sockets.on('connection', function( socket ) {
+  socket.emit('message', { message: 'welcome to the chat' });
+  socket.on('addPepole', function( data ) {
+    io.sockets.emit('addPepole', data);
+  });
+});
+
 var mongoose = require('mongoose');
 
 mongoose.connect(config.mongo);
 
-
-
-var app = express();
 app.use(function( req, res, next ) {
+  res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-  Override, Content-Type, Accept');
@@ -44,15 +53,7 @@ app.use(session({
 
 routes(app);
 
-app.use(function( req, res, next ) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-
-
-app.use(function( err, req, res, next ) {
+app.use(function( err, req, res ) {
   console.log(err);
   res.status(err.status || 500);
   res.render('error', {
@@ -61,7 +62,4 @@ app.use(function( err, req, res, next ) {
   });
 });
 
-
-
-app.listen(config.port);
 module.exports = app;
