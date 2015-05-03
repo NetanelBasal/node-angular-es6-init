@@ -26,9 +26,10 @@
 
   require('./routes')(app);
 
+  require('./home')(app);
+
   require('./auth/auth.index');
 
-  require('./mainNav/index')(app);
 
 })();
 

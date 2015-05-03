@@ -23,12 +23,13 @@
 
   require("./routes")(app);
 
+  require("./home")(app);
+
   require("./auth/auth.index");
 
-  require("./mainNav/index")(app);
 })();
 
-},{"./auth/auth.index":2,"./common/field-match.module":10,"./common/password.chars.validator":11,"./common/spinner-btn/spinner.btn.module":13,"./common/wait-me":14,"./config":15,"./config/auth.interceptor":16,"./config/config.index":17,"./config/run.phase.js":18,"./mainNav/index":19,"./modules":22,"./routes":24,"./services/$hello.index":25,"./services/services.index":28}],2:[function(require,module,exports){
+},{"./auth/auth.index":2,"./common/field-match.module":10,"./common/password.chars.validator":11,"./common/spinner-btn/spinner.btn.module":13,"./common/wait-me":14,"./config":15,"./config/auth.interceptor":16,"./config/config.index":17,"./config/run.phase.js":18,"./home":21,"./modules":22,"./routes":24,"./services/$hello.index":25,"./services/services.index":28}],2:[function(require,module,exports){
 "use strict";
 
 angular.module("auth.local", []).config(["$stateProvider", function ($stateProvider) {
@@ -454,7 +455,7 @@ module.exports = config;
 function runPhase($rootScope, UserService, $state, AuthService) {
 
 
-  UserService.authUser = AuthService.getUserToken() || null;
+  UserService.authUser = AuthService.getUserToken();
 
   $rootScope.UserService = UserService;
 
@@ -478,46 +479,127 @@ module.exports = runPhase;
 },{}],19:[function(require,module,exports){
 "use strict";
 
-module.exports = function (app) {
-  require("./mainNav.controller")(app);
-  require("./mainNav.directive")(app);
-};
-
-},{"./mainNav.controller":20,"./mainNav.directive":21}],20:[function(require,module,exports){
-"use strict";
+var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 module.exports = function (app) {
-  app.controller("MainNavController", MainNavController);
+  app.controller("HomeController", HomeController);
 };
 
-var MainNavController =
-// @ngInject
-function MainNavController() {
-  _classCallCheck(this, MainNavController);
+var HomeController = (function () {
+  // @ngInject
+  function HomeController($socket, AuthService) {
+    var _this = this;
+    _classCallCheck(this, HomeController);
+
+    this.$socket = $socket;
+    this.AuthService = AuthService;
+    this.pepoles = [{ name: "avi" }, { name: "netanel" }];
+    this.$socket.on("addPepole", function (data) {
+      return _this.pepoles.push(data);
+    });
+  }
+  HomeController.$inject = ["$socket", "AuthService"];
+  HomeController.$inject = ["$socket", "AuthService"];
+
+  _prototypeProperties(HomeController, null, {
+    getMsg: {
+      value: function getMsg() {
+        this.$socket.emit("addPepole", { name: "more man" });
+      },
+      writable: true,
+      configurable: true
+    },
+    register: {
+      value: function register() {
+        this.AuthService.register(this.user).then(function (res) {
+          console.log(res);
+        });
+      },
+      writable: true,
+      configurable: true
+    },
+    login: {
+      value: function login() {
+        var _this = this;
+        this.AuthService.login(this.userLogin).then(function (res) {
+          _this.AuthService.saveUserToken(res.data);
+        });
+      },
+      writable: true,
+      configurable: true
+    },
+    logout: {
+      value: function logout() {
+        this.AuthService.deleteUserToken();
+      },
+      writable: true,
+      configurable: true
+    },
+    profile: {
+      value: function profile() {
+        this.$http.get("/profile").then(function (res) {
+          console.log(res);
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      },
+      writable: true,
+      configurable: true
+    },
+    auth: {
+      value: function auth() {
+        this.AuthService.providerLogin("facebook").then(function () {
+          console.log("success");
+        });
+      },
+      writable: true,
+      configurable: true
+    },
+    google: {
+      value: function google() {
+        this.AuthService.providerLogin("google").then(function () {
+          console.log("success");
+        });
+      },
+      writable: true,
+      configurable: true
+    }
+  });
+
+  return HomeController;
+})();
+
+},{}],20:[function(require,module,exports){
+"use strict";
+
+module.exports = function (app) {
+  // @ngInject
+  app.directive("home", function () {
+    return {
+      restrict: "E",
+      templateUrl: "app/home/views/home.tpl.html",
+      scope: {},
+      controller: "HomeController as home",
+      link: link
+    };
+
+    function link(scope, elem, attr) {
+      console.log("Im in home");
+    }
+  });
 };
 
 },{}],21:[function(require,module,exports){
 "use strict";
 
 module.exports = function (app) {
-  // @ngInject
-  app.directive("mainNav", function () {
-    return {
-      restrict: "E",
-      scope: {},
-      controller: "MainNavController as vm",
-      link: link
-    };
-
-    function link(scope, elem, attr) {
-      console.log("Im in mainNav");
-    }
-  });
+  require("./home.controller")(app);
+  require("./home.directive")(app);
 };
 
-},{}],22:[function(require,module,exports){
+},{"./home.controller":19,"./home.directive":20}],22:[function(require,module,exports){
 "use strict";
 
 (function () {
@@ -542,7 +624,7 @@ module.exports = function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state("home", {
     url: "/",
-    templateUrl: "app/home/home.tpl.html"
+    template: "<home></home>"
   });
 };
 
@@ -906,7 +988,7 @@ var UserService =
 ["store", function UserService(store) {
   _classCallCheck(this, UserService);
 
-  this.authUser = store.get("oAuth") || null;
+  this.authUser = store.get("oAuth");
 }];
 
 module.exports = UserService;

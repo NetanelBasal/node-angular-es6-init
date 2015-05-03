@@ -1,17 +1,13 @@
 var gulp = require('gulp');
-var usemin = require('gulp-usemin');
-var uglify = require('gulp-uglify');
-var minifyCSS = require('gulp-minify-css');
-var rev = require('gulp-rev');
-
-
+var $ = require('gulp-load-plugins')();
+var config = require('./../gulp-config');
 
 gulp.task('usemin', function() {
-  gulp.src('./index.html')
-    .pipe(usemin({
+  gulp.src(config.mainFile)
+    .pipe($.usemin({
       assetsDir: __dirname + '/../',
-      js       : [uglify({ mangle: false }),rev()],
-      css      : [minifyCSS(), rev()]
+      js       : [$.uglify({ mangle: false }), $.rev()],
+      css      : [$.minifyCss(), $.rev()]
     }))
 
     .pipe(gulp.dest('./production'));

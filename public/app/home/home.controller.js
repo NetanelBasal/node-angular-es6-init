@@ -1,15 +1,13 @@
-/**
- * HomeController
- */
+export default (app) => {
+  app.controller('HomeController', HomeController);
+}
+
+
 class HomeController {
   // @ngInject
-  constructor( $modal, $socket, $window, AuthService, $http ) {
-    this.$modal = $modal;
-    this.$http = $http;
-    this.$window = $window;
+  constructor($socket, AuthService ) {
     this.$socket = $socket;
     this.AuthService = AuthService;
-    this.user = {};
     this.pepoles = [{ name: 'avi' }, { name: 'netanel' }];
     this.$socket.on('addPepole', ( data ) => this.pepoles.push(data));
   }
@@ -57,4 +55,3 @@ class HomeController {
 
 }
 
-export default HomeController

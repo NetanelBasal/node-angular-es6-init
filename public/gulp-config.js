@@ -2,10 +2,8 @@
 
 var config = {
 
-  build: false,
-
   server: {
-    root: './'
+    root: './index.ejs'
   },
 
   js: {
@@ -13,8 +11,9 @@ var config = {
     src         : './app/main.js',
     dist        : './dist',
     watch       : ['./app/**/**/*.js']
-
   },
+
+  mainFile: './index.ejs',
 
   sass: {
     src  : './sass/main.scss',

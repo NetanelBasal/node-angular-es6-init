@@ -5,7 +5,7 @@ export default ( $stateProvider, $urlRouterProvider ) => {
   $stateProvider
     .state('home', {
       url        : '/',
-      templateUrl: 'app/home/home.tpl.html'
+      template: '<home></home>'
     });
 
 }

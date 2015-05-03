@@ -1,0 +1,36 @@
+<h1>home</h1>
+
+<section>
+
+  <h1 ng-if="$root.UserService.authUser">is auth</h1>
+  <ul>
+    <li ng-repeat="pepole in home.pepoles">
+      {{pepole.name}}
+    </li>
+  </ul>
+  <button ng-click="home.getMsg()">click me</button>
+
+  <button ng-click="home.auth()">facebook</button>
+
+  <button ng-click="home.google()">gmail</button>
+
+  <button ng-click="home.profile()">profile</button>
+  <h1>Register now</h1>
+  <form ng-submit="home.register()">
+    name <input type="text" ng-model="home.user.firstName"/>
+    email <input type="text" ng-model="home.user.email"/>
+    pass <input type="text" ng-model="home.user.password"/>
+
+    <input type="submit" value="submit"/>
+  </form>
+
+  <h1>Login</h1>
+  <form ng-submit="home.login()">
+    email <input type="text" ng-model="home.userLogin.email"/>
+    pass <input type="text" ng-model="home.userLogin.password"/>
+
+    <input type="submit" value="submit"/>
+  </form>
+
+  <button ng-click="home.logout()">log out</button>
+</section>

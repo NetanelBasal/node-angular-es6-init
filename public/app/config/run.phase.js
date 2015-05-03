@@ -2,7 +2,7 @@
 function runPhase( $rootScope, UserService, $state, AuthService ) {
 
 
-  UserService.authUser = AuthService.getUserToken() || null;
+  UserService.authUser = AuthService.getUserToken();
 
   $rootScope.UserService = UserService;
 
